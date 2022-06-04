@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629798033081",
+    "project_id": "tabata-c473e",
+    "storage_bucket": "tabata-c473e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629798033081:android:ba35098b8e1198e02c2d68",
+        "android_client_info": {
+          "package_name": "dev.pacoquinha.tabata.tabata"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629798033081-orh70g9eivesul6d4tpaq6hqg66iomju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3zayI9Y4DC19MObDv4ZS9DEo-T8Vo7Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629798033081-orh70g9eivesul6d4tpaq6hqg66iomju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
