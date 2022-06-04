@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/common/widgets/button.dart';
+import 'package:tabata/constants/routes.dart';
 
 class FirstAccessPage extends StatelessWidget {
   const FirstAccessPage({Key? key}) : super(key: key);
 
-  void navigateToChangeSettings() {}
+  void navigateToChangeSettings(BuildContext context) {
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      changeSettingsRoute,
+      (_) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class FirstAccessPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 68.0),
                   child: Button(
                     text: "Criar Tabata",
-                    onPressed: navigateToChangeSettings,
+                    onPressed: () => navigateToChangeSettings(context),
                   ),
                 ),
               ],
