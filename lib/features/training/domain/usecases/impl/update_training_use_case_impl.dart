@@ -4,10 +4,9 @@ import 'package:tabata/features/training/domain/datasources/data_sources.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 import 'package:tabata/features/training/domain/error/failures.dart';
 import 'package:tabata/features/training/domain/repositories/training_repository.dart';
-import 'package:tabata/features/training/domain/usecases/delete_training_use_case.dart';
 import 'package:tabata/features/training/domain/usecases/update_training_use_case.dart';
 
-abstract class UpdateTrainingUseCaseImpl implements UpdateTrainingUseCase {
+class UpdateTrainingUseCaseImpl implements UpdateTrainingUseCase {
   final FirebaseAuth _auth;
   final TrainingRepository _repository;
 

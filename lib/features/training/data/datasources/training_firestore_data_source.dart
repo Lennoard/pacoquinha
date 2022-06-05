@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tabata/features/training/data/mappers/local_data_mapper.dart';
 import 'package:tabata/features/training/data/mappers/training_mapper.dart';
 import 'package:tabata/features/training/domain/datasources/training_data_source.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 import 'package:tabata/features/training/domain/error/failures.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class TrainingFirestoreDataSource implements TrainingDataSource {
   final FirebaseFirestore _db;

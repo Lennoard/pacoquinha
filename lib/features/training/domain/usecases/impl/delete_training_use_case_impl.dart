@@ -6,7 +6,7 @@ import 'package:tabata/features/training/domain/error/failures.dart';
 import 'package:tabata/features/training/domain/repositories/training_repository.dart';
 import 'package:tabata/features/training/domain/usecases/delete_training_use_case.dart';
 
-abstract class DeleteTrainingUseCaseImpl implements DeleteTrainingUseCase {
+class DeleteTrainingUseCaseImpl implements DeleteTrainingUseCase {
   final FirebaseAuth _auth;
   final TrainingRepository _repository;
 

@@ -9,7 +9,7 @@ class TrainingData extends Equatable {
   final int restingTime;
   final int cycleCount;
   final int cycleInterval;
-  final TrainingIntensity intensity;
+  final int intensity;
 
   const TrainingData({
     required this.id,
@@ -21,19 +21,6 @@ class TrainingData extends Equatable {
     required this.cycleInterval,
     required this.intensity,
   });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'timestamp': timestamp,
-      'seriesTime': seriesTime,
-      'seriesCount': seriesCount,
-      'restingTime': restingTime,
-      'cycleCount': cycleCount,
-      'cycleInterval': cycleInterval,
-      'intensity': intensity,
-    };
-  }
 
   @override
   List<Object?> get props => [id];
