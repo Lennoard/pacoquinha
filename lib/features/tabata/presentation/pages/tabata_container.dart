@@ -12,10 +12,10 @@ class TabataContainerPage extends StatefulWidget {
 class _TabataContainerPageState extends State<TabataContainerPage> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    TabataMainPage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const TabataMainPage(),
     TrainingReportPage(),
-    Text("Profile"),
+    const Text("Profile"),
   ];
 
   void _onItemTapped(int index) {

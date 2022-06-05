@@ -1,4 +1,5 @@
 import 'package:tabata/features/training/data/models/training_data.dart';
+import 'package:tabata/features/training/domain/entities/training_intensity.dart';
 
 class LocalTrainingMapper {
   Map<String, dynamic> map(TrainingData trainingData) {
@@ -9,6 +10,7 @@ class LocalTrainingMapper {
       'restingTime': trainingData.restingTime,
       'cycleCount': trainingData.cycleCount,
       'cycleInterval': trainingData.cycleInterval,
+      'intensity': trainingData.intensity,
     };
   }
 
@@ -21,6 +23,7 @@ class LocalTrainingMapper {
       restingTime: map['restingTime'] as int,
       cycleCount: map['cycleCount'] as int,
       cycleInterval: map['cycleInterval'] as int,
+      intensity: map['intensity'] as TrainingIntensity,
     );
   }
 }

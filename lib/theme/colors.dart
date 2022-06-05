@@ -33,3 +33,7 @@ const MaterialColor tabataBackground = MaterialColor(
   },
 );
 const int _tabataBackgroundDefault = 0xFF17191C;
+
+const Color lightIntensityColor = Color(0xFF50A63F);
+const Color moderateIntensityColor = Color(0xFF603CA2);
+const Color intenseIntensityColor = Color(0xFFFF5F33);

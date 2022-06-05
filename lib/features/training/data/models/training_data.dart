@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:tabata/features/training/domain/entities/training_intensity.dart';
 
 class TrainingData extends Equatable {
   final int id;
@@ -8,6 +9,7 @@ class TrainingData extends Equatable {
   final int restingTime;
   final int cycleCount;
   final int cycleInterval;
+  final TrainingIntensity intensity;
 
   const TrainingData({
     required this.id,
@@ -17,6 +19,7 @@ class TrainingData extends Equatable {
     required this.restingTime,
     required this.cycleCount,
     required this.cycleInterval,
+    required this.intensity,
   });
 
   Map<String, dynamic> toMap() {
@@ -28,6 +31,7 @@ class TrainingData extends Equatable {
       'restingTime': restingTime,
       'cycleCount': cycleCount,
       'cycleInterval': cycleInterval,
+      'intensity': intensity,
     };
   }
 
