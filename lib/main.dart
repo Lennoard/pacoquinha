@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tabata/app_module.dart';
 import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/presentation/pages/change_settings.dart';
 import 'package:tabata/features/tabata/presentation/pages/countdown.dart';
@@ -9,6 +11,7 @@ import 'package:tabata/theme/tabata_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  AppModule.initLocator(GetIt.instance);
   runApp(const MyApp());
 }
 
