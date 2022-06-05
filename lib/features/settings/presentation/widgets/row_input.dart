@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabata/common/widgets/paper_container.dart';
 
 class RowInput extends StatelessWidget {
   final String iconPath;
@@ -16,11 +17,7 @@ class RowInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: const Color(0XFF22262A),
-        ),
+      child: PaperContainer(
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: Row(

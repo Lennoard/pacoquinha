@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:tabata/theme/colors.dart';
 
 class CustomAppbar extends StatelessWidget {
   final String title;
+  IconButton? rightButton;
 
-  const CustomAppbar({Key? key, required this.title}) : super(key: key);
+  CustomAppbar({Key? key, required this.title, this.rightButton})
+      : super(key: key);
 
   @override
   PreferredSize build(BuildContext context) {
@@ -13,11 +16,12 @@ class CustomAppbar extends StatelessWidget {
         centerTitle: true,
         shape: const Border(
           bottom: BorderSide(
-            color: Color(0xff454c54),
+            color: tabataGrey,
             width: 1,
           ),
         ),
         backgroundColor: Colors.transparent,
+        actions: [if (rightButton != null) rightButton!],
         elevation: 0,
         title: Text(title),
       ),

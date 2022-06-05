@@ -3,6 +3,7 @@ import 'package:tabata/common/widgets/button.dart';
 import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/presentation/widgets/info_hint.dart';
 import 'package:tabata/features/settings/presentation/widgets/row_input.dart';
+import 'package:tabata/theme/colors.dart';
 
 class ChangeSettingsPage extends StatelessWidget {
   const ChangeSettingsPage({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class ChangeSettingsPage extends StatelessWidget {
           centerTitle: true,
           shape: const Border(
             bottom: BorderSide(
-              color: Color(0xff454c54),
+              color: tabataGrey,
               width: 1,
             ),
           ),
