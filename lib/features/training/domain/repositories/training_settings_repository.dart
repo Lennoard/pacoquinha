@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../data_sources.dart';
+import '../datasources/data_sources.dart';
 import '../entities/training_settings.dart';
 import '../error/failures.dart';
 

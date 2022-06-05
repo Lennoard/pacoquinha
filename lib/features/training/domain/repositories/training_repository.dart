@@ -1,17 +1,21 @@
 import 'package:dartz/dartz.dart';
-import 'package:tabata/features/training/domain/data_sources.dart';
+import 'package:tabata/features/training/domain/datasources/data_sources.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 
-import '../entities/training_settings.dart';
 import '../error/failures.dart';
 
 abstract class TrainingRepository {
-  Future<Either<Failure, BaseTraining>> getTraining(
+  Future<Either<Failure, Training>> getTraining(
       String id, DataSource source);
 
-  Future<Either<Failure, void>> saveTraining(
-      BaseTraining training, DataSource source);
+  Future<Either<Failure, List<Training>>> getTrainings(DataSource source);
+
+  Future<Either<Failure, void>> insertTraining(
+      Training training, DataSource source);
+
+  Future<Either<Failure, void>> updateTraining(
+      Training training, DataSource source);
 
   Future<Either<Failure, void>> deleteTraining(
-      BaseTraining training, DataSource source);
+      Training training, DataSource source);
 }

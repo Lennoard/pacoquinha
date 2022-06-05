@@ -7,4 +7,6 @@ abstract class Failure extends Equatable {
 
 class NetworkFailure extends Failure {}
 
+class DatabaseFailure extends Failure {}
+
 class TrainingNotFoundFailure extends Failure {}

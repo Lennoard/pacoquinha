@@ -1,11 +1,13 @@
 import 'package:equatable/equatable.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tabata/features/training/domain/entities/training_settings.dart';
 
-class BaseTraining extends Equatable {
-  final Timestamp time;
-  final Map<String, int> settings;
+class Training extends Equatable {
+  final dynamic id;
+  final DateTime time;
+  final TrainingSettings settings;
 
-  const BaseTraining({
+  const Training({
+    required this.id,
     required this.time,
     required this.settings,
   });
