@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/common/widgets/button.dart';
-import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
+import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/presentation/widgets/info_hint.dart';
 import 'package:tabata/features/settings/presentation/widgets/row_input.dart';
 
 class ChangeSettingsPage extends StatelessWidget {
   const ChangeSettingsPage({Key? key}) : super(key: key);
+
+  void navigateToTabata(BuildContext context) {
+    Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +17,7 @@ class ChangeSettingsPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
         child: AppBar(
+          centerTitle: true,
           shape: const Border(
             bottom: BorderSide(
               color: Color(0xff454c54),
@@ -21,18 +26,7 @@ class ChangeSettingsPage extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.close),
-              ),
-              const Text(
-                "Configurações",
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
+          title: const Text("Configurações"),
         ),
       ),
       body: Padding(
@@ -75,17 +69,7 @@ class ChangeSettingsPage extends StatelessWidget {
                 ),
               ],
             ),
-            Button(
-              text: "Próximo",
-              onPressed: () => showConfirmationBottomSheet(
-                context: context,
-                title: "Tem certeza que deseja sair?",
-                body: "Ao sair, as alterações realizadas não serão salvas.",
-                confirmLabel: "Confirmar",
-                denyLabel: "Voltar",
-                imagePath: 'assets/images/warning.png',
-              ),
-            ),
+            Button(text: "Próximo", onPressed: () => navigateToTabata(context)),
           ],
         ),
       ),
