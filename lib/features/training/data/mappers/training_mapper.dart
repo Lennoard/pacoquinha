@@ -14,6 +14,7 @@ class TrainingMapper {
         cycleCount: trainingData.cycleCount,
         cycleInterval: trainingData.cycleInterval,
       ),
+      intensity: trainingData.intensity,
     );
   }
 
@@ -26,6 +27,7 @@ class TrainingMapper {
       restingTime: training.settings.restingTime,
       cycleCount: training.settings.cycleCount,
       cycleInterval: training.settings.cycleInterval,
+      intensity: training.intensity,
     );
   }
 }
