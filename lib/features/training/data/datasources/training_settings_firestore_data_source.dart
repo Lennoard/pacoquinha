@@ -6,12 +6,12 @@ import 'package:tabata/features/training/domain/datasources/training_settings_da
 import 'package:tabata/features/training/domain/entities/training_settings.dart';
 import 'package:tabata/features/training/domain/error/failures.dart';
 
-class TrainingFirestoreDataSource implements TrainingSettingsDataSource {
+class TrainingSettingsFirestoreDataSource implements TrainingSettingsDataSource {
   final FirebaseFirestore _db;
-  final FirebaseAuth auth;
+  final FirebaseAuth _auth;
   final LocalTrainingSettingsMapper _mapper;
 
-  TrainingFirestoreDataSource(this._db, this.auth, this._mapper);
+  TrainingSettingsFirestoreDataSource(this._db, this._auth, this._mapper);
 
   @override
   Future<Either<Failure, TrainingSettings>> getTrainingSettings() async {
@@ -36,7 +36,7 @@ class TrainingFirestoreDataSource implements TrainingSettingsDataSource {
     }
   }
 
-  String get _uid => auth.currentUser?.uid ?? "";
+  String get _uid => _auth.currentUser?.uid ?? "";
 
   DocumentReference<Map<String, dynamic>> get settingsDoc => _db
       .collection('users')
