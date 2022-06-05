@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
         child: Lottie.asset("assets/lottie/splash_animation.json",
             onLoaded: (composition) {
           Timer(
-            const Duration(seconds: 3),
+            const Duration(milliseconds: 2700),
             () => Navigator.of(context).pushReplacement(
               MaterialPageRoute(
                 builder: (BuildContext context) => const FirstAccessPage(),

@@ -18,62 +18,64 @@ Future<bool?> showConfirmationBottomSheet({
         topRight: Radius.circular(16),
       ),
     ),
-    builder: (BuildContext bc) {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 22.0, horizontal: 26.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(imagePath),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 36.0,
-                    vertical: 12.0,
-                  ),
-                  child: Text(
-                    body,
+    builder: (BuildContext context) {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.5,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 22.0, horizontal: 26.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(imagePath),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 18,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 36.0,
+                      vertical: 12.0,
+                    ),
+                    child: Text(
+                      body,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 18,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Button(
-                    text: confirmLabel,
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    }),
-                TextButton(
-                  style: TextButton.styleFrom(
-                    primary: tabataPurple,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                  },
-                  child: Text(
-                    denyLabel,
-                    style: const TextStyle(
-                      fontSize: 16.0,
+                ],
+              ),
+              Column(
+                children: [
+                  Button(
+                      text: confirmLabel,
+                      onPressed: () {
+                        Navigator.of(context).pop(true);
+                      }),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: tabataPurple,
+                    ),
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text(
+                      denyLabel,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       );
     },
