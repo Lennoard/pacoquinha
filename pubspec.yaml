@@ -43,12 +43,15 @@ dependencies:
   path:
   fluttertoast: ^8.0.9
   percent_indicator: ^4.2.2
+  mobx: ^2.0.7+2
+  flutter_mobx: ^2.0.6+1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   injectable_generator:
-  build_runner:
+  build_runner: ^2.1.11
+  mobx_codegen: ^2.0.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

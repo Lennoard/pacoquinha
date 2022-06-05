@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tabata/common/widgets/button.dart';
-import 'package:tabata/constants/routes.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 import 'package:tabata/features/settings/presentation/widgets/info_hint.dart';
 import 'package:tabata/features/settings/presentation/widgets/row_input.dart';
+import 'package:tabata/features/settings/store/settings.store.dart';
 import 'package:tabata/theme/colors.dart';
 
-class ChangeSettingsPage extends StatelessWidget {
+class ChangeSettingsPage extends StatefulWidget {
   const ChangeSettingsPage({Key? key}) : super(key: key);
 
+  @override
+  State<ChangeSettingsPage> createState() => _ChangeSettingsPageState();
+}
+
+class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
+  final settingsStore = TrainingSettingsStore();
+
   void navigateToTabata(BuildContext context) {
-    Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
+    const TrainingSettings updatedSettings = TrainingSettings(
+      cycleCount: 1,
+      cycleInterval: 1,
+      restingTime: 1,
+      seriesCount: 1,
+      seriesTime: 1,
+    );
+    settingsStore.updateTrainingSettingStore(updatedSettings);
+    // Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
   }
 
   @override
@@ -38,53 +55,69 @@ class ChangeSettingsPage extends StatelessWidget {
             Column(
               children: [
                 const InfoHint(),
-                RowInput(
-                  iconPath: 'assets/icons/ic_workout_time_colored.png',
-                  label: "Tempo da série",
-                  value: "00:00",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_workout_time_colored.png',
+                    label: "Tempo da série",
+                    value: settingsStore.trainingSettings.seriesTime.toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
-                RowInput(
-                  iconPath: 'assets/icons/ic_series.png',
-                  label: "Quantidade de séries",
-                  value: "8",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_series.png',
+                    label: "Quantidade de séries",
+                    value:
+                        settingsStore.trainingSettings.seriesCount.toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
-                RowInput(
-                  iconPath: 'assets/icons/ic_rest_colored_alt.png',
-                  label: "Tempo de descanso",
-                  value: "00:10",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_rest_colored_alt.png',
+                    label: "Tempo de descanso",
+                    value:
+                        settingsStore.trainingSettings.restingTime.toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
-                RowInput(
-                  iconPath: 'assets/icons/ic_cicle_colored.png',
-                  label: "Quantidade de ciclos",
-                  value: "1",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_cicle_colored.png',
+                    label: "Quantidade de ciclos",
+                    value: settingsStore.trainingSettings.cycleCount.toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
-                RowInput(
-                  iconPath: 'assets/icons/ic_interval.png',
-                  label: "Intervalo entre ciclos",
-                  value: "00:00",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_interval.png',
+                    label: "Intervalo entre ciclos",
+                    value:
+                        settingsStore.trainingSettings.cycleInterval.toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
-                RowInput(
-                  iconPath: 'assets/icons/ic_time_colored.png',
-                  label: "Tempo total",
-                  value: "00:00",
-                  onTap: () {
-                    // TODO
-                  },
+                Observer(
+                  builder: (_) => RowInput(
+                    iconPath: 'assets/icons/ic_time_colored.png',
+                    label: "Tempo total",
+                    value: settingsStore.trainingSettings.getTrainingTime
+                        .toString(),
+                    onTap: () {
+                      // TODO
+                    },
+                  ),
                 ),
               ],
             ),

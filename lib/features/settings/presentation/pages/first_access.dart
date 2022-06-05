@@ -17,7 +17,13 @@ class FirstAccessPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Image.asset('assets/imagery/imagery_tabata.png'),
+          Row(
+            children: [
+              Image.asset(
+                'assets/imagery/imagery_tabata.png',
+              ),
+            ],
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 30.0,

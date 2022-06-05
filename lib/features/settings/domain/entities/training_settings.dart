@@ -15,6 +15,8 @@ class TrainingSettings extends Equatable {
     required this.cycleInterval,
   });
 
+  int get getTrainingTime => seriesCount * seriesTime * cycleCount;
+
   factory TrainingSettings.defaultSettings() {
     return const TrainingSettings(
       seriesCount: 8,
@@ -26,11 +28,6 @@ class TrainingSettings extends Equatable {
   }
 
   @override
-  List<Object?> get props => [
-    seriesTime,
-    seriesCount,
-    restingTime,
-    cycleCount,
-    cycleInterval
-  ];
+  List<Object?> get props =>
+      [seriesTime, seriesCount, restingTime, cycleCount, cycleInterval];
 }
