@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:tabata/common/widgets/button.dart';
+import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
+import 'package:tabata/common/widgets/hour_picker.dart';
+import 'package:tabata/common/widgets/hour_picker_bottom_sheet.dart';
 import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 import 'package:tabata/features/settings/domain/usecases/save_training_settings_use_case.dart';
@@ -61,8 +64,13 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   iconPath: 'assets/icons/ic_workout_time_colored.png',
                   label: "Tempo da série",
                   value: "00:00",
-                  onTap: () {
-                    // TODO
+                  onTap: () async {
+                    var hourPair = await showHourPickerBottomSheet(
+                      context: context,
+                      title: "Tempo da série",
+                    ) ?? HourPair(0, 0);
+
+                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
                   },
                 ),
                 RowInput(
@@ -77,8 +85,13 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   iconPath: 'assets/icons/ic_rest_colored_alt.png',
                   label: "Tempo de descanso",
                   value: "00:10",
-                  onTap: () {
-                    // TODO
+                  onTap: () async {
+                    var hourPair = await showHourPickerBottomSheet(
+                      context: context,
+                      title: "Tempo de descanso",
+                    ) ?? HourPair(0, 0);
+
+                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
                   },
                 ),
                 RowInput(
@@ -93,8 +106,13 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   iconPath: 'assets/icons/ic_interval.png',
                   label: "Intervalo entre ciclos",
                   value: "00:00",
-                  onTap: () {
-                    // TODO
+                  onTap: () async {
+                    var hourPair = await showHourPickerBottomSheet(
+                      context: context,
+                      title: "Intervalo entre ciclos",
+                    ) ?? HourPair(0, 0);
+
+                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
                   },
                 ),
                 RowInput(
