@@ -22,20 +22,33 @@ class TabataMainPage extends StatefulWidget {
 class _TabataMainPageState extends State<TabataMainPage>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
-  static int maxSeconds = 20;
-  int seconds = maxSeconds;
   Timer? timer;
   bool isRunningTimer = false;
   bool isPausedTimer = false;
 
-  final TrainingSettingsStore trainingSettingsStore = TrainingSettingsStore();
+  int? seconds;
   int? actualCycle;
+  int? cycleCount;
+  int? seriesCount;
+  int? actualSerie;
+  int? seriesTime;
+  int? restingTime;
+
+  final TrainingSettingsStore trainingSettingsStore = TrainingSettingsStore();
 
   @override
   void initState() {
     super.initState();
 
     _controller = AnimationController(vsync: this);
+    cycleCount = trainingSettingsStore.trainingSettings.cycleCount;
+    actualCycle = trainingSettingsStore.trainingSettings.cycleCount;
+    seriesCount = trainingSettingsStore.trainingSettings.seriesCount;
+    actualSerie = 1;
+    seriesTime = trainingSettingsStore.trainingSettings.seriesTime;
+    seconds = trainingSettingsStore.trainingSettings.seriesTime;
+    restingTime = trainingSettingsStore.trainingSettings.restingTime;
+    restingTime = trainingSettingsStore.trainingSettings.restingTime;
   }
 
   @override
@@ -51,21 +64,28 @@ class _TabataMainPageState extends State<TabataMainPage>
   void startTimer() {
     setState(() => isRunningTimer = true);
     timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      setState(() => seconds--);
+      if (seconds! > 0) {
+        setState(() => seconds = seconds! - 1);
+      }
+
+      if (seconds == 0) {
+        resetTimer();
+        startTimer();
+      }
     });
   }
 
   void resetTimer() {
-    seconds = maxSeconds;
     setState(() {
+      seconds = seriesTime;
       isRunningTimer = false;
       isPausedTimer = false;
     });
     timer?.cancel();
-    // stopTimer();
+    // pauseTimer();
   }
 
-  void stopTimer() {
+  void pauseTimer() {
     setState(() {
       isRunningTimer = false;
       isPausedTimer = true;
@@ -123,11 +143,11 @@ class _TabataMainPageState extends State<TabataMainPage>
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              ImageIcon(
+            children: [
+              const ImageIcon(
                 AssetImage('assets/icons/ic_series.png'),
               ),
-              BoldText(text: "20/20"),
+              BoldText(text: "$actualSerie / $seriesCount"),
             ],
           )
         ],
@@ -137,7 +157,7 @@ class _TabataMainPageState extends State<TabataMainPage>
 
   void handleSkipTraining(context) async {
     if (!isPausedTimer || isRunningTimer) {
-      stopTimer();
+      pauseTimer();
     }
 
     final bool? skipTraining = await showConfirmationBottomSheet(
@@ -184,13 +204,13 @@ class _TabataMainPageState extends State<TabataMainPage>
                 if (isRunningTimer || isPausedTimer)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      ImageIcon(
+                    children: [
+                      const ImageIcon(
                         AssetImage(
                           'assets/icons/ic_cicle.png',
                         ),
                       ),
-                      BoldText(text: "1/3"),
+                      BoldText(text: "$actualCycle / $cycleCount"),
                     ],
                   ),
                 SizedBox(
@@ -200,13 +220,12 @@ class _TabataMainPageState extends State<TabataMainPage>
                     fit: StackFit.expand,
                     children: [
                       Observer(
-                        builder: (_) => SeriesProgress(
-                          percentage: seconds /
-                              trainingSettingsStore.trainingSettings.seriesTime,
+                        builder: (_) => const SeriesProgress(
+                          percentage: 1,
                         ),
                       ),
-                      const CicleProgress(
-                        percentage: 1,
+                      CycleProgress(
+                        percentage: actualCycle! / cycleCount!,
                       ),
                       if (!isRunningTimer && !isPausedTimer)
                         timerStoppedContent(),
@@ -260,7 +279,7 @@ class _TabataMainPageState extends State<TabataMainPage>
                     ElevatedButton(
                       onPressed: !isRunningTimer && isPausedTimer
                           ? startTimer
-                          : stopTimer,
+                          : pauseTimer,
                       style: ElevatedButton.styleFrom(
                         shape: const CircleBorder(),
                         padding: const EdgeInsets.all(24),
