@@ -5,7 +5,7 @@ import 'package:tabata/features/training/data/mappers/local_data_mapper.dart';
 import 'package:tabata/features/training/data/mappers/training_mapper.dart';
 import 'package:tabata/features/training/domain/datasources/training_data_source.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
-import 'package:tabata/features/training/domain/error/failures.dart';
+import 'package:tabata/common/data/failures.dart';
 
 class TrainingFirestoreDataSource implements TrainingDataSource {
   final FirebaseFirestore _db;

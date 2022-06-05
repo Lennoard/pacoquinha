@@ -4,7 +4,6 @@ import 'package:tabata/features/training/domain/entities/training_intensity.dart
 class LocalTrainingMapper {
   Map<String, dynamic> map(TrainingData trainingData) {
     return {
-      'id': 0,
       'timestamp': trainingData.timestamp,
       'seriesTime': trainingData.seriesTime,
       'seriesCount': trainingData.seriesCount,

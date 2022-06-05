@@ -1,4 +1,4 @@
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 
 class LocalTrainingSettingsMapper {
   Map<String, dynamic> map(TrainingSettings settings) {

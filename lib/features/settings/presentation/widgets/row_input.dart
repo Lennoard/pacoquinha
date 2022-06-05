@@ -5,12 +5,14 @@ class RowInput extends StatelessWidget {
   final String iconPath;
   final String label;
   final String value;
+  final GestureTapCallback? onTap;
 
   const RowInput({
     Key? key,
     required this.iconPath,
     required this.label,
     required this.value,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class RowInput extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16.0),
       child: PaperContainer(
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.all(22.0),
           child: Row(
