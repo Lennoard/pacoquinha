@@ -8,6 +8,8 @@ abstract class _TabataState with Store {
   Map trainingSettings = {
     'paused': false,
     'stopped': false,
+    'actual_cycle': 0,
+    'actual_series': 0,
   };
 
   @action

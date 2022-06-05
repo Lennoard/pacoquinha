@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tabata/common/widgets/button.dart';
+import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/domain/entities/training_settings.dart';
+import 'package:get_it/get_it.dart';
+import 'package:tabata/features/settings/domain/usecases/save_training_settings_use_case.dart';
 import 'package:tabata/features/settings/presentation/widgets/info_hint.dart';
 import 'package:tabata/features/settings/presentation/widgets/row_input.dart';
 import 'package:tabata/features/settings/store/settings.store.dart';
@@ -16,17 +19,26 @@ class ChangeSettingsPage extends StatefulWidget {
 
 class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
   final settingsStore = TrainingSettingsStore();
+  late final SaveTrainingSettingsUseCase saveSettings;
+
+  TrainingSettings settings = TrainingSettings.defaultSettings();
 
   void navigateToTabata(BuildContext context) {
-    const TrainingSettings updatedSettings = TrainingSettings(
-      cycleCount: 1,
-      cycleInterval: 1,
-      restingTime: 1,
-      seriesCount: 1,
-      seriesTime: 1,
-    );
-    settingsStore.updateTrainingSettingStore(updatedSettings);
-    // Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
+    // const TrainingSettings updatedSettings = TrainingSettings(
+    //   cycleCount: 1,
+    //   cycleInterval: 1,
+    //   restingTime: 1,
+    //   seriesCount: 1,
+    //   seriesTime: 1,
+    // );
+    // settingsStore.updateTrainingSettingStore(updatedSettings);
+    Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    saveSettings = GetIt.instance<SaveTrainingSettingsUseCase>();
   }
 
   @override
@@ -121,7 +133,14 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                 ),
               ],
             ),
-            Button(text: "Próximo", onPressed: () => navigateToTabata(context)),
+            Button(
+              text: "Próximo",
+              onPressed: () async {
+                // TODO: update MobX
+                await saveSettings(settings);
+                navigateToTabata(context);
+              },
+            ),
           ],
         ),
       ),
