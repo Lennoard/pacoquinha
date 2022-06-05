@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:tabata/features/training/data/database_helper.dart';
+import 'package:tabata/common/data/database_helper.dart';
 import 'package:tabata/features/training/data/mappers/local_data_mapper.dart';
 import 'package:tabata/features/training/data/mappers/training_mapper.dart';
 import 'package:tabata/features/training/domain/datasources/training_data_source.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
-import 'package:tabata/features/training/domain/error/failures.dart';
+import 'package:tabata/common/data/failures.dart';
 
 class TrainingLocalDataSource implements TrainingDataSource {
   final DatabaseHelper _dbHelper;

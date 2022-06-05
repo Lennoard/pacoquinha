@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:tabata/features/training/domain/datasources/data_sources.dart';
 import 'package:tabata/features/training/domain/datasources/training_data_source.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
-import 'package:tabata/features/training/domain/error/failures.dart';
+import 'package:tabata/common/data/failures.dart';
 import 'package:tabata/features/training/domain/repositories/training_repository.dart';
 
 class TrainingRepositoryImpl implements TrainingRepository {

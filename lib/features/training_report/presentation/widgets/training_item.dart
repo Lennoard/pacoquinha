@@ -3,7 +3,7 @@ import 'package:tabata/common/widgets/custom_textbutton.dart';
 import 'package:tabata/common/widgets/disabled_text.dart';
 import 'package:tabata/common/widgets/paper_container.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 import 'package:tabata/features/training_report/presentation/pages/training_details.dart';
 import 'package:tabata/features/training_report/presentation/widgets/training_info.dart';
 import 'package:tabata/features/training_report/presentation/widgets/training_intensity.dart';
