@@ -8,7 +8,7 @@ import 'package:tabata/common/widgets/custom_appbar.dart';
 import 'package:tabata/common/widgets/disabled_text.dart';
 import 'package:tabata/common/widgets/paper_container.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 import 'package:tabata/features/training_report/presentation/widgets/training_detail_item.dart';
 import 'package:tabata/features/training_report/presentation/widgets/training_intensity_icon.dart';
 import 'package:tabata/theme/colors.dart';

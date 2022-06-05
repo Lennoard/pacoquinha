@@ -36,37 +36,55 @@ class ChangeSettingsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
-              children: const [
-                InfoHint(),
+              children: [
+                const InfoHint(),
                 RowInput(
                   iconPath: 'assets/icons/ic_workout_time_colored.png',
                   label: "Tempo da série",
                   value: "00:00",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
                 RowInput(
                   iconPath: 'assets/icons/ic_series.png',
                   label: "Quantidade de séries",
                   value: "8",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
                 RowInput(
                   iconPath: 'assets/icons/ic_rest_colored_alt.png',
                   label: "Tempo de descanso",
                   value: "00:10",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
                 RowInput(
                   iconPath: 'assets/icons/ic_cicle_colored.png',
                   label: "Quantidade de ciclos",
                   value: "1",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
                 RowInput(
                   iconPath: 'assets/icons/ic_interval.png',
                   label: "Intervalo entre ciclos",
                   value: "00:00",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
                 RowInput(
                   iconPath: 'assets/icons/ic_time_colored.png',
                   label: "Tempo total",
                   value: "00:00",
+                  onTap: () {
+                    // TODO
+                  },
                 ),
               ],
             ),

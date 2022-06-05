@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:tabata/features/training/data/mappers/local_training_settings_mapper.dart';
-import 'package:tabata/features/training/domain/datasources/training_settings_data_source.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
-import 'package:tabata/features/training/domain/error/failures.dart';
+import 'package:tabata/features/settings/data/mappers/local_training_settings_mapper.dart';
+import 'package:tabata/features/settings/domain/datasources/training_settings_data_source.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
+import 'package:tabata/common/data/failures.dart';
 
 class TrainingSettingsFirestoreDataSource implements TrainingSettingsDataSource {
   final FirebaseFirestore _db;

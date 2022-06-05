@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tabata/common/widgets/custom_appbar.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 import 'package:tabata/features/training/domain/entities/training_intensity.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 import 'package:tabata/features/training_report/presentation/widgets/training_item.dart';
 
 class TrainingReportPage extends StatelessWidget {

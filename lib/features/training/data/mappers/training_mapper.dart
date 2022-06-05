@@ -1,7 +1,7 @@
 import 'package:tabata/features/training/data/models/training_data.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 import 'package:tabata/features/training/domain/entities/training_intensity.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 
 class TrainingMapper {
   Training map(TrainingData trainingData) {

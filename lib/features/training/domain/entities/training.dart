@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:tabata/features/training/domain/entities/training_intensity.dart';
-import 'package:tabata/features/training/domain/entities/training_settings.dart';
+import 'package:tabata/features/settings/domain/entities/training_settings.dart';
 
 class Training extends Equatable {
   final dynamic id;

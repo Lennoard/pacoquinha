@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:tabata/features/training/domain/datasources/data_sources.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
 
-import '../error/failures.dart';
+import '../../../../common/data/failures.dart';
 
 abstract class TrainingRepository {
   Future<Either<Failure, Training>> getTraining(dynamic id, DataSource source);
