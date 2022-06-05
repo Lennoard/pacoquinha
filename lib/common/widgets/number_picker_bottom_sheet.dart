@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/common/widgets/button.dart';
-import 'package:tabata/common/widgets/hour_picker.dart';
+import 'package:tabata/common/widgets/number_picker.dart';
 
-Future<HourPair?> showHourPickerBottomSheet({
+Future<int?> showNumberPickerBottomSheet({
   required BuildContext context,
   required String title,
-  int maxMin = 59,
-  int maxSec = 59,
 }) {
-  HourPair pair = HourPair(0, 0);
+  int number = 0;
 
-  return showModalBottomSheet<HourPair>(
+  return showModalBottomSheet<int>(
     context: context,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -42,20 +40,21 @@ Future<HourPair?> showHourPickerBottomSheet({
                       horizontal: 36.0,
                       vertical: 16.0,
                     ),
-                    child: CustomPicker(
-                        title: title,
-                        maxMin: maxMin,
-                        maxSec: maxSec,
-                        onChanged: (hourPair) {
-                          pair = hourPair;
-                        }),
+                    child: NumberPicker(
+                      value: 0,
+                      minValue: 0,
+                      maxValue: 100,
+                      onChanged: (n) {
+                        number = n;
+                      },
+                    ),
                   ),
                 ],
               ),
               Button(
                 text: "Selecionar",
                 onPressed: () {
-                  Navigator.of(context).pop(pair);
+                  Navigator.of(context).pop(number);
                 },
               ),
             ],
@@ -64,4 +63,5 @@ Future<HourPair?> showHourPickerBottomSheet({
       );
     },
   );
+
 }

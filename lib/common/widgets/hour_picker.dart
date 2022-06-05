@@ -10,25 +10,29 @@ class HourPair {
   HourPair(this.minutes, this.seconds);
 }
 
-class CustomHourPicker extends StatefulWidget {
+class CustomPicker extends StatefulWidget {
   final String? title;
+  final int maxMin;
+  final int maxSec;
   final Function(HourPair hourPair) onChanged;
 
-  const CustomHourPicker({
+  const CustomPicker({
     Key? key,
     required this.title,
+    required this.maxMin,
+    required this.maxSec,
     required this.onChanged,
   }) : super(key: key);
 
   @override
-  CustomHourPickerState createState() => CustomHourPickerState(onChanged);
+  CustomPickerState createState() => CustomPickerState(onChanged);
 }
 
-class CustomHourPickerState extends State<CustomHourPicker> {
+class CustomPickerState extends State<CustomPicker> {
   final Function(HourPair hourPair) onChanged;
   HourPair hourPair = HourPair(0, 0);
 
-  CustomHourPickerState(this.onChanged);
+  CustomPickerState(this.onChanged);
 
   SizedBox buildDecoration() {
     return const SizedBox(
@@ -90,7 +94,7 @@ class CustomHourPickerState extends State<CustomHourPicker> {
               padding: const EdgeInsets.only(top: 8),
               child: NumberPicker(
                 minValue: 00,
-                maxValue: 59,
+                maxValue: widget.maxMin,
                 zeroPad: true,
                 value: hourPair.minutes,
                 infiniteLoop: true,
@@ -118,7 +122,7 @@ class CustomHourPickerState extends State<CustomHourPicker> {
               padding: const EdgeInsets.only(top: 8),
               child: NumberPicker(
                 minValue: 00,
-                maxValue: 59,
+                maxValue: widget.maxSec,
                 zeroPad: true,
                 value: hourPair.seconds,
                 infiniteLoop: true,

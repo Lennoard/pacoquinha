@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 import 'package:tabata/common/widgets/button.dart';
-import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
 import 'package:tabata/common/widgets/hour_picker.dart';
 import 'package:tabata/common/widgets/hour_picker_bottom_sheet.dart';
 import 'package:tabata/constants/routes.dart';
 import 'package:tabata/features/settings/domain/entities/training_settings.dart';
-import 'package:get_it/get_it.dart';
 import 'package:tabata/features/settings/domain/usecases/save_training_settings_use_case.dart';
 import 'package:tabata/features/settings/presentation/widgets/info_hint.dart';
 import 'package:tabata/features/settings/presentation/widgets/row_input.dart';
@@ -23,24 +22,37 @@ class ChangeSettingsPage extends StatefulWidget {
 class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
   final settingsStore = TrainingSettingsStore();
   late final SaveTrainingSettingsUseCase saveSettings;
+  int seriesTime = 0;
+  int restingTime = 0;
+  int cycleInterval = 0;
+  int cycleCount = 0;
+  int seriesCount = 0;
+  int trainingTime = 0;
 
   TrainingSettings settings = TrainingSettings.defaultSettings();
 
-  void navigateToTabata(BuildContext context) {
-    // const TrainingSettings updatedSettings = TrainingSettings(
-    //   cycleCount: 1,
-    //   cycleInterval: 1,
-    //   restingTime: 1,
-    //   seriesCount: 1,
-    //   seriesTime: 1,
-    // );
-    // settingsStore.updateTrainingSettingStore(updatedSettings);
+  void submit(BuildContext context) {
+    TrainingSettings updatedSettings = TrainingSettings(
+      cycleCount: cycleCount,
+      cycleInterval: cycleInterval,
+      restingTime: restingTime,
+      seriesCount: seriesCount,
+      seriesTime: restingTime,
+    );
+    settingsStore.updateTrainingSettingStore(updatedSettings);
     Navigator.pushNamedAndRemoveUntil(context, tabataRoute, (_) => false);
   }
 
   @override
   void initState() {
     super.initState();
+    seriesTime = settings.seriesTime;
+    restingTime = settings.restingTime;
+    cycleInterval = settings.cycleInterval;
+    seriesCount = settings.seriesCount;
+    cycleCount = settings.cycleCount;
+    trainingTime = settings.getTrainingTime;
+
     saveSettings = GetIt.instance<SaveTrainingSettingsUseCase>();
   }
 
@@ -74,14 +86,17 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_workout_time_colored.png',
                     label: "Tempo da série",
-                    value: settingsStore.trainingSettings.seriesTime.toString(),
+                    value: seriesTime.toString(),
                     onTap: () async {
-                    var hourPair = await showHourPickerBottomSheet(
-                      context: context,
-                      title: "Tempo da série",
-                    ) ?? HourPair(0, 0);
+                      var hourPair = await showHourPickerBottomSheet(
+                            context: context,
+                            title: "Tempo da série",
+                          ) ??
+                          HourPair(0, 0);
 
-                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
+                      setState(() {
+                        seriesTime = (hourPair.minutes * 60) + hourPair.seconds;
+                      });
                     },
                   ),
                 ),
@@ -89,10 +104,17 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_series.png',
                     label: "Quantidade de séries",
-                    value:
-                        settingsStore.trainingSettings.seriesCount.toString(),
-                    onTap: () {
-                      // TODO
+                    value: seriesCount.toString(),
+                    onTap: () async {
+                      var count = await showHourPickerBottomSheet(
+                        context: context,
+                        title: "Quantidade de séries",
+                        maxMin: 00
+                      ) ?? HourPair(0, 0);
+
+                      setState(() {
+                        seriesCount = count.seconds;
+                      });
                     },
                   ),
                 ),
@@ -100,15 +122,17 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_rest_colored_alt.png',
                     label: "Tempo de descanso",
-                    value:
-                        settingsStore.trainingSettings.restingTime.toString(),
+                    value: restingTime.toString(),
                     onTap: () async {
-                    var hourPair = await showHourPickerBottomSheet(
-                      context: context,
-                      title: "Tempo de descanso",
-                    ) ?? HourPair(0, 0);
+                      var hourPair = await showHourPickerBottomSheet(
+                            context: context,
+                            title: "Tempo de descanso",
+                          ) ??
+                          HourPair(0, 0);
 
-                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
+                      setState(() {
+                        restingTime = (hourPair.minutes * 60) + hourPair.seconds;
+                      });
                     },
                   ),
                 ),
@@ -116,9 +140,16 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_cicle_colored.png',
                     label: "Quantidade de ciclos",
-                    value: settingsStore.trainingSettings.cycleCount.toString(),
-                    onTap: () {
-                      // TODO
+                    value: cycleCount.toString(),
+                    onTap: () async {
+                      var count = await showHourPickerBottomSheet(
+                        context: context,
+                        title: "Quantidade de ciclos",
+                      ) ?? HourPair(0, 0);
+
+                      setState(() {
+                        cycleCount = count.seconds;
+                      });
                     },
                   ),
                 ),
@@ -126,15 +157,17 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_interval.png',
                     label: "Intervalo entre ciclos",
-                    value:
-                        settingsStore.trainingSettings.cycleInterval.toString(),
+                    value: cycleInterval.toString(),
                     onTap: () async {
-                    var hourPair = await showHourPickerBottomSheet(
-                      context: context,
-                      title: "Intervalo entre ciclos",
-                    ) ?? HourPair(0, 0);
+                      var hourPair = await showHourPickerBottomSheet(
+                            context: context,
+                            title: "Intervalo entre ciclos",
+                          ) ??
+                          HourPair(0, 0);
 
-                    var seconds = (hourPair.minutes * 60) + hourPair.seconds;
+                      setState(() {
+                        cycleInterval = (hourPair.minutes * 60) + hourPair.seconds;
+                      });
                     },
                   ),
                 ),
@@ -142,11 +175,7 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
                   builder: (_) => RowInput(
                     iconPath: 'assets/icons/ic_time_colored.png',
                     label: "Tempo total",
-                    value: settingsStore.trainingSettings.getTrainingTime
-                        .toString(),
-                    onTap: () {
-                      // TODO
-                    },
+                    value: trainingTime.toString(),
                   ),
                 ),
               ],
@@ -156,7 +185,7 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
               onPressed: () async {
                 // TODO: update MobX
                 await saveSettings(settings);
-                navigateToTabata(context);
+                submit(context);
               },
             ),
           ],
