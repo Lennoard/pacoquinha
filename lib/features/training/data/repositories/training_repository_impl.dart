@@ -26,7 +26,7 @@ class TrainingRepositoryImpl implements TrainingRepository {
 
   @override
   Future<Either<Failure, Training>> getTraining(
-      String id, DataSource source) async {
+      dynamic id, DataSource source) async {
     switch (source) {
       case DataSource.firestore:
         return _firestoreDataSource.getTraining(id);
