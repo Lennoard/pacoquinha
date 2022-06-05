@@ -5,8 +5,7 @@ import 'package:tabata/features/training/domain/entities/training.dart';
 import '../error/failures.dart';
 
 abstract class TrainingRepository {
-  Future<Either<Failure, Training>> getTraining(
-      String id, DataSource source);
+  Future<Either<Failure, Training>> getTraining(dynamic id, DataSource source);
 
   Future<Either<Failure, List<Training>>> getTrainings(DataSource source);
 
