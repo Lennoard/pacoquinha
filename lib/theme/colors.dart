@@ -49,3 +49,5 @@ const Color paperBackground = Color(0xFF22262A);
 const Color foregroundColor = Color(0xFFE3E5E8);
 
 const Color textColor = Color(0xFF22262A);
+
+const Color timerBackground = Color(0xFF22262A);
