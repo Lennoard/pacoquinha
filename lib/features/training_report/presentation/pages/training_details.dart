@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tabata/common/utils/instensity_label.dart';
 import 'package:tabata/common/widgets/bold_text.dart';
 import 'package:tabata/common/widgets/button.dart';
+import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
 import 'package:tabata/common/widgets/custom_appbar.dart';
 import 'package:tabata/common/widgets/disabled_text.dart';
 import 'package:tabata/common/widgets/paper_container.dart';
@@ -18,6 +19,17 @@ class TrainingDetailsPage extends StatelessWidget {
 
   TrainingDetailsPage({Key? key, required this.training}) : super(key: key);
 
+  void handleDeleteTraining(context) async {
+    await showConfirmationBottomSheet(
+      context: context,
+      imagePath: 'assets/images/delete.png',
+      title: "Tem certeza que deseja excluir?",
+      body: "Ao excluir, o treino será apagado e não poderá ser recuperado.",
+      confirmLabel: "Excluir",
+      denyLabel: "Voltar",
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +41,7 @@ class TrainingDetailsPage extends StatelessWidget {
             icon: const ImageIcon(
               AssetImage("assets/icons/ic_trash.png"),
             ),
-            onPressed: () {},
+            onPressed: () => handleDeleteTraining(context),
           ),
         ),
       ),
