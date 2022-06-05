@@ -16,5 +16,5 @@ class Training extends Equatable {
   });
 
   @override
-  List<Object?> get props => [id, time, settings];
+  List<Object?> get props => [id, time, settings, intensity];
 }
