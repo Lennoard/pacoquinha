@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:tabata/common/widgets/bold_text.dart';
 import 'package:tabata/common/widgets/button.dart';
 import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
 import 'package:tabata/constants/routes.dart';
+import 'package:tabata/features/settings/store/settings.store.dart';
 import 'package:tabata/features/tabata/presentation/widgets/tabata_indicators/cicle_progress.dart';
 import 'package:tabata/features/tabata/presentation/widgets/tabata_indicators/series_progress.dart';
 import 'package:tabata/features/tabata/presentation/widgets/tabata_settings/tabata_settings.dart';
@@ -20,11 +22,14 @@ class TabataMainPage extends StatefulWidget {
 class _TabataMainPageState extends State<TabataMainPage>
     with TickerProviderStateMixin {
   late final AnimationController _controller;
-  static int maxSeconds = 60;
+  static int maxSeconds = 20;
   int seconds = maxSeconds;
   Timer? timer;
   bool isRunningTimer = false;
   bool isPausedTimer = false;
+
+  final TrainingSettingsStore trainingSettingsStore = TrainingSettingsStore();
+  int? actualCycle;
 
   @override
   void initState() {
@@ -159,7 +164,7 @@ class _TabataMainPageState extends State<TabataMainPage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            if (!isRunningTimer && !isPausedTimer) const TabataSettingsRow(),
+            if (!isRunningTimer && !isPausedTimer) TabataSettingsRow(),
             if (isRunningTimer || isPausedTimer)
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -194,13 +199,14 @@ class _TabataMainPageState extends State<TabataMainPage>
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      const SeriesProgress(
-                        seriesCount: 5,
-                        actualSerie: 4,
+                      Observer(
+                        builder: (_) => SeriesProgress(
+                          percentage: seconds /
+                              trainingSettingsStore.trainingSettings.seriesTime,
+                        ),
                       ),
                       const CicleProgress(
-                        cicleCount: 3,
-                        actualCicle: 1,
+                        percentage: 1,
                       ),
                       if (!isRunningTimer && !isPausedTimer)
                         timerStoppedContent(),
