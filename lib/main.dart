@@ -6,7 +6,7 @@ import 'package:tabata/screens/home_screen/home_screen.dart';
 import 'package:tabata/screens/splash_screen/splash_screen.dart';
 import 'package:tabata/theme/tabata_theme.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
