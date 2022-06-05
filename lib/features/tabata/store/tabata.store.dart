@@ -1,9 +1,9 @@
 import 'package:mobx/mobx.dart';
 part 'tabata.store.g.dart';
 
-class TabataState = _TabataState with _$TabataState;
+class TabataStore = _TabataStore with _$TabataStore;
 
-abstract class _TabataState with Store {
+abstract class _TabataStore with Store {
   @observable
   Map trainingSettings = {
     'paused': false,

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:tabata/theme/colors.dart';
 
-class CicleProgress extends StatelessWidget {
+class CycleProgress extends StatelessWidget {
   final double percentage;
-  const CicleProgress({
+  const CycleProgress({
     Key? key,
     required this.percentage,
   }) : super(key: key);
