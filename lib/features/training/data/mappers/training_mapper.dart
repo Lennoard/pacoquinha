@@ -1,5 +1,6 @@
 import 'package:tabata/features/training/data/models/training_data.dart';
 import 'package:tabata/features/training/domain/entities/training.dart';
+import 'package:tabata/features/training/domain/entities/training_intensity.dart';
 import 'package:tabata/features/training/domain/entities/training_settings.dart';
 
 class TrainingMapper {
@@ -14,7 +15,7 @@ class TrainingMapper {
         cycleCount: trainingData.cycleCount,
         cycleInterval: trainingData.cycleInterval,
       ),
-      intensity: trainingData.intensity,
+      intensity: TrainingIntensity.values[trainingData.intensity],
     );
   }
 
@@ -27,7 +28,7 @@ class TrainingMapper {
       restingTime: training.settings.restingTime,
       cycleCount: training.settings.cycleCount,
       cycleInterval: training.settings.cycleInterval,
-      intensity: training.intensity,
+      intensity: training.intensity.index,
     );
   }
 }

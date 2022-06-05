@@ -5,6 +5,7 @@ class LocalTrainingMapper {
   Map<String, dynamic> map(TrainingData trainingData) {
     return {
       'id': 0,
+      'timestamp': trainingData.timestamp,
       'seriesTime': trainingData.seriesTime,
       'seriesCount': trainingData.seriesCount,
       'restingTime': trainingData.restingTime,
@@ -23,7 +24,7 @@ class LocalTrainingMapper {
       restingTime: map['restingTime'] as int,
       cycleCount: map['cycleCount'] as int,
       cycleInterval: map['cycleInterval'] as int,
-      intensity: map['intensity'] as TrainingIntensity,
+      intensity: map['intensity'] as int,
     );
   }
 }

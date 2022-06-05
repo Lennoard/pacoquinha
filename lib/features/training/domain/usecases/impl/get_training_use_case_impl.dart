@@ -6,7 +6,7 @@ import 'package:tabata/features/training/domain/error/failures.dart';
 import 'package:tabata/features/training/domain/repositories/training_repository.dart';
 import 'package:tabata/features/training/domain/usecases/get_training_use_case.dart';
 
-abstract class GetTrainingUseCaseImpl implements GetTrainingUseCase {
+class GetTrainingUseCaseImpl implements GetTrainingUseCase {
   final FirebaseAuth _auth;
   final TrainingRepository _repository;
 
