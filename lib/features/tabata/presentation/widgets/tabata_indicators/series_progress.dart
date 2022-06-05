@@ -3,13 +3,15 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:tabata/theme/colors.dart';
 
 class SeriesProgress extends StatelessWidget {
-  final int seriesCount;
-  final int actualSerie;
+  final int? seriesTime;
+  final int? actualCounter;
+  final double percentage;
 
   const SeriesProgress({
     Key? key,
-    required this.seriesCount,
-    required this.actualSerie,
+    this.seriesTime,
+    this.actualCounter,
+    required this.percentage,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,8 @@ class SeriesProgress extends StatelessWidget {
     return CircularPercentIndicator(
       radius: MediaQuery.of(context).size.width * 0.4,
       lineWidth: 12.0,
-      percent: ((seriesCount - actualSerie) / seriesCount).abs(),
+      addAutomaticKeepAlive: false,
+      percent: percentage,
       backgroundColor: timerBackground,
       progressColor: tabataPurple,
       circularStrokeCap: CircularStrokeCap.round,
