@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/theme/tabata_theme.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
