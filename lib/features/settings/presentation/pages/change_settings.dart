@@ -111,7 +111,7 @@ class _ChangeSettingsPageState extends State<ChangeSettingsPage> {
               text: "Próximo",
               onPressed: () async {
                 // TODO: update MobX
-                saveSettings(settings);
+                await saveSettings(settings);
                 navigateToTabata(context);
               },
             ),
