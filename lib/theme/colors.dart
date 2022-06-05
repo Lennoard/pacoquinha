@@ -47,3 +47,5 @@ const Color disabledText = Color(0XFFABB2BA);
 const Color paperBackground = Color(0xFF22262A);
 
 const Color foregroundColor = Color(0xFFE3E5E8);
+
+const Color textColor = Color(0xFF22262A);

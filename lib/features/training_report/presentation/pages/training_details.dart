@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/common/utils/instensity_label.dart';
+import 'package:tabata/common/utils/show_toast.dart';
 import 'package:tabata/common/widgets/bold_text.dart';
 import 'package:tabata/common/widgets/button.dart';
 import 'package:tabata/common/widgets/confirmation_bottom_sheet.dart';
@@ -20,7 +21,7 @@ class TrainingDetailsPage extends StatelessWidget {
   TrainingDetailsPage({Key? key, required this.training}) : super(key: key);
 
   void handleDeleteTraining(context) async {
-    await showConfirmationBottomSheet(
+    final bool? delete = await showConfirmationBottomSheet(
       context: context,
       imagePath: 'assets/images/delete.png',
       title: "Tem certeza que deseja excluir?",
@@ -28,6 +29,10 @@ class TrainingDetailsPage extends StatelessWidget {
       confirmLabel: "Excluir",
       denyLabel: "Voltar",
     );
+
+    if (delete!) {
+      showToast(message: "Treino excluído");
+    }
   }
 
   @override
