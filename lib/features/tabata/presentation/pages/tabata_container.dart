@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tabata/features/tabata/presentation/pages/tabata_main.dart';
+import 'package:tabata/features/training_report/presentation/pages/training_report.dart';
 
 class TabataContainerPage extends StatefulWidget {
   const TabataContainerPage({Key? key}) : super(key: key);
@@ -10,13 +11,10 @@ class TabataContainerPage extends StatefulWidget {
 
 class _TabataContainerPageState extends State<TabataContainerPage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
+
   static const List<Widget> _widgetOptions = <Widget>[
     TabataMainPage(),
-    Text("List training"),
+    TrainingReportPage(),
     Text("Profile"),
   ];
 
@@ -50,7 +48,7 @@ class _TabataContainerPageState extends State<TabataContainerPage> {
             icon: ImageIcon(
               AssetImage("assets/icons/ic_profile.png"),
             ),
-            label: 'School',
+            label: 'Perfil',
           ),
         ],
         currentIndex: _selectedIndex,
