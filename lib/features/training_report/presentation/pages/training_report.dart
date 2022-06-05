@@ -21,13 +21,25 @@ class TrainingReportPage extends StatelessWidget {
       time: DateTime.now(),
       intensity: TrainingIntensity.intense,
     ),
+    Training(
+      id: 1,
+      settings: const TrainingSettings(
+        seriesCount: 15,
+        seriesTime: 3,
+        restingTime: 2,
+        cycleCount: 5,
+        cycleInterval: 1,
+      ),
+      time: DateTime.now(),
+      intensity: TrainingIntensity.moderate,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(60),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(60),
         child: CustomAppbar(title: "Seus treinos"),
       ),
       body: ListView.builder(

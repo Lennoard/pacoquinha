@@ -37,3 +37,13 @@ const int _tabataBackgroundDefault = 0xFF17191C;
 const Color lightIntensityColor = Color(0xFF50A63F);
 const Color moderateIntensityColor = Color(0xFF603CA2);
 const Color intenseIntensityColor = Color(0xFFFF5F33);
+
+const Color neutralGrey = Color(0xFF2E3338);
+
+const Color tabataGrey = Color(0xff454c54);
+
+const Color disabledText = Color(0XFFABB2BA);
+
+const Color paperBackground = Color(0xFF22262A);
+
+const Color foregroundColor = Color(0xFFE3E5E8);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tabata/theme/colors.dart';
 
 class DisabledText extends StatelessWidget {
   final String text;
@@ -9,7 +10,7 @@ class DisabledText extends StatelessWidget {
     return Text(
       text,
       style: const TextStyle(
-        color: Color(0XFFABB2BA),
+        color: disabledText,
       ),
     );
   }
