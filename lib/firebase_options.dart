@@ -53,10 +53,10 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD3zayI9Y4DC19MObDv4ZS9DEo-T8Vo7Ns',
-    appId: '1:629798033081:android:ba35098b8e1198e02c2d68',
-    messagingSenderId: '629798033081',
-    projectId: 'tabata-c473e',
-    storageBucket: 'tabata-c473e.appspot.com',
+    apiKey: '¯\_(ツ)_/¯',
+    appId: '¯\_(ツ)_/¯',
+    messagingSenderId: '¯\_(ツ)_/¯',
+    projectId: '¯\_(ツ)_/¯',
+    storageBucket: '¯\_(ツ)_/¯',
   );
 }
